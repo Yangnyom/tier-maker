@@ -19,17 +19,14 @@
         p { color: #666; font-size: 1.1rem; }
 
         /* =========================================
-            [실습 1] 메인 레이아웃 (보드와 사이드 패널 가로 배치)
-            ========================================= */
+           [실습 1] 메인 레이아웃 (보드와 사이드 패널 가로 배치)
+           ========================================= */
         .layout-wrapper {
             max-width: 1200px;
             margin: 0 auto;
             
             /* TODO 1: 보드와 사이드 패널을 가로로 배치하고, 공간이 좁아지면 자연스럽게 줄바꿈되도록 설정하세요. (간격: 20px) */
             /* 💡 힌트: display, flex-wrap, gap 속성을 사용하세요. */
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
             
         }
 
@@ -42,9 +39,6 @@
             
             /* TODO 2: 남은 가로 공간을 꽉 채우도록 설정하고, 내부 행(Row)들이 세로로 쌓이도록 방향을 지정하세요. */
             /* 💡 힌트: flex-grow와 flex-direction 속성이 필요합니다. (우선 display: flex; 를 선언하는 것도 잊지 마세요!) */
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
             
         }
 
@@ -56,15 +50,14 @@
         }
 
         /* =========================================
-            [실습 2] 티어 행 내부 배치
-            ========================================= */
+           [실습 2] 티어 행 내부 배치
+           ========================================= */
         .tier-row {
             border-bottom: 2px solid #333;
             min-height: 120px;
             
             /* TODO 3: 좌측 등급 라벨과 우측 아이템 드롭 영역을 가로로 배치하세요. */
             /* 💡 힌트: 요소를 가로로 나열하는 가장 기본적인 Flexbox 속성 1가지만 적용하면 됩니다. */
-            display: flex;
             
         }
         .tier-row:last-child { border-bottom: none; }
@@ -87,8 +80,8 @@
         .rank-d { background-color: #7fbfff; }
 
         /* =========================================
-            [실습 3] 드롭 영역 및 아이템 정렬
-            ========================================= */
+           [실습 3] 드롭 영역 및 아이템 정렬
+           ========================================= */
         .tier-items, .item-pool {
             padding: 15px;
             gap: 10px;
@@ -98,9 +91,6 @@
             
             /* TODO 4: 아이템들을 가로로 나열하되 넘치면 줄바꿈되도록 하고, 라벨을 제외한 남은 공간을 꽉 채우세요. */
             /* 💡 힌트: display, flex-wrap, flex-grow 세 가지 속성을 모두 조합해야 합니다. */
-            display: flex;
-            flex-wrap: wrap;
-            flex-grow: 1;
             
         }
 
@@ -152,7 +142,6 @@
             .tier-row { 
                 /* TODO 5: 모바일 화면에서는 라벨과 드롭 영역이 세로로 배치되도록 방향을 바꾸세요. */
                 /* 💡 힌트: flex-direction 속성을 활용하여 정렬 축을 세로 방향으로 변경하세요. */
-                flex-direction: column;
                 
             }
             .tier-label { width: 100%; height: 50px; font-size: 1.5rem; }
@@ -170,23 +159,23 @@
         <main class="tier-board">
             <div class="tier-row">
                 <div class="tier-label rank-s">S</div>
-                <div class="tier-items"></div>
+                <div class="tier-items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
             <div class="tier-row">
                 <div class="tier-label rank-a">A</div>
-                <div class="tier-items"></div>
+                <div class="tier-items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
             <div class="tier-row">
                 <div class="tier-label rank-b">B</div>
-                <div class="tier-items"></div>
+                <div class="tier-items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
             <div class="tier-row">
                 <div class="tier-label rank-c">C</div>
-                <div class="tier-items"></div>
+                <div class="tier-items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
             <div class="tier-row">
                 <div class="tier-label rank-d">D</div>
-                <div class="tier-items"></div>
+                <div class="tier-items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
         </main>
 
@@ -196,84 +185,85 @@
             </div>
 
             <h2 style="font-size: 1.2rem; margin-bottom: 10px; color: #333;">📌 아이템 대기열</h2>
-            <div class="item-pool" id="pool">
-                <div class="item" draggable="true"  id="dddcry1">
+            <div class="item-pool" id="pool" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <!-- 조원들이 전달해준 아이템 코드를 여기에 붙여넣습니다. -->
+                <div class="item" draggable="true"  id="dddcry1" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/서브컬쳐(종합).jpg" alt="서브컬쳐">
                     <div class="item-name">서브컬쳐</div>
                 </div>
-                <div class="item" draggable="true"  id="dddcry2">
+                <div class="item" draggable="true"  id="dddcry2" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/리겜.jpg" alt="리듬게임">
                     <div class="item-name">리듬게임</div>
                 </div>
-                <div class="item" draggable="true"  id="dddcry3">
+                <div class="item" draggable="true"  id="dddcry3" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/옵치.jpg" alt="FPS">
                     <div class="item-name">FPS</div>
                 </div>
-                <div class="item" draggable="true"  id="dddcry4">
+                <div class="item" draggable="true"  id="dddcry4" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/lol.jpg" alt="MOBA">
                     <div class="item-name">MOBA</div>
                 </div>
 
-                <div class="item" draggable="true"  id="dddcry5">
+                <div class="item" draggable="true"  id="dddcry5" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/메이플.jpg" alt="RPG">
                     <div class="item-name">RPG</div>
                 </div>
-                <div class="item" draggable="true"  id="dddcry6">
+                <div class="item" draggable="true"  id="dddcry6" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/마크.jpg" alt="샌드박스">
                     <div class="item-name">샌드박스</div>
                 </div>
-                <div class="item" draggable="true"  id="dddcry7">
+                <div class="item" draggable="true"  id="dddcry7" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/배그.jpg" alt="배틀로얄">
                     <div class="item-name">배틀로얄</div>
                 </div>
-                <div class="item" draggable="true"  id="item_yourname_1">
+                <div class="item" draggable="true"  id="item_yourname_1" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/genshin.png" alt="RPG">
                     <div class="item-name">RPG</div>
                 </div>
                 
-                <div class="item" draggable="true"  id="item_yourname_2">
+                <div class="item" draggable="true"  id="item_yourname_2" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/geometry.png" alt="Rythm">
                     <div class="item-name">리듬게임</div>
                 </div>
-                <div class="item" id="game-lol" draggable="true" >
+                <div class="item" id="game-lol" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/lol.webp" alt="롤">
                     <div class="item-name">MOBA</div>
                 </div>
 
-                <div class="item" id="game-maple" draggable="true" >
+                <div class="item" id="game-maple" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)">
                     <img src="images/maple.webp" alt="메이플">
                     <div class="item-name">RPG</div>
                 </div>
 
-                <div class="item" id="game-mc" draggable="true" >
+                <div class="item" id="game-mc" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)" >
                     <img src="images/mc.webp" alt="마크">
                     <div class="item-name">샌드박스</div>
                 </div>
-                <div class="item" draggable="true"  id="item_seungwoo_1">
+                <div class="item" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)" id="item_seungwoo_1">
                     <img src="images/아이작.webp" alt="아이작">
                     <div class="item-name">로그라이크</div>
                 </div>
                 
-                <div class="item" draggable="true"  id="item_seungwoo_2">
+                <div class="item" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)" id="item_seungwoo_2">
                     <img src="images/발로란트.png" alt="발로란트">
                     <div class="item-name">fps</div>
                 </div>
 
-                <div class="item" draggable="true"  id="item_seungwoo_3">
+                <div class="item" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)"  id="item_seungwoo_3">
                     <img src="images/배틀그라운드.jpg" alt="배틀그라운드">
                     <div class="item-name">배틀로얄</div>
                 </div>
-                <div class="item" draggable="true"  id="item_kkm1">
+                <div class="item" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)"  id="item_kkm1">
                     <img src="images/스컬(로그라이크).png" alt="로그라이크">
                     <div class="item-name">로그라이크</div>
                 </div>
                 
-                <div class="item" draggable="true"  id="item_kkm2">
+                <div class="item" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)"  id="item_kkm2">
                     <img src="images/오버워치.png" alt="오버워치">
                     <div class="item-name">fps</div>
                 </div>
 
-                <div class="item" draggable="true"  id="item_kkm3">
+                <div class="item" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)"  id="item_kkm3">
                     <img src="images/maple.webp" alt="RPG">
                     <div class="item-name">RPG</div>
                 </div>
@@ -282,37 +272,28 @@
     </div>
 
     <script>
-        // 1. 드래그 시작 이벤트 (아이템 클릭 시)
-        document.addEventListener('dragstart', function(e) {
-            if (e.target.classList.contains('item')) {
-                e.dataTransfer.setData("text", e.target.id);
+        function allowDrop(ev) { ev.preventDefault(); }
+        function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            if (ev.target.classList.contains('tier-items') || ev.target.classList.contains('item-pool')) {
+                ev.target.appendChild(draggedElement);
+            } else if (ev.target.closest('.tier-items')) {
+                ev.target.closest('.tier-items').appendChild(draggedElement);
+            } else if (ev.target.closest('.item-pool')) {
+                ev.target.closest('.item-pool').appendChild(draggedElement);
             }
-        });
-
-        // 2. 드롭 영역 이벤트 (어디에 드롭할지)
-        document.querySelectorAll('.tier-items, .item-pool').forEach(area => {
-            area.addEventListener('dragover', (e) => e.preventDefault());
-            area.addEventListener('drop', (e) => {
-                e.preventDefault();
-                const id = e.dataTransfer.getData("text");
-                const el = document.getElementById(id);
-                // 클릭된 곳이 .tier-items 인지 확인
-                const target = e.target.closest('.tier-items') || e.target.closest('.item-pool');
-                if (el && target) {
-                    target.appendChild(el);
-                }
-            });
-        });
-
-        // 3. 미리보기 이벤트 (마우스 올릴 시)
-        document.addEventListener('mouseover', function(e) {
-            const item = e.target.closest('.item');
-            if (item) {
-                const img = item.querySelector('img').src;
-                const name = item.querySelector('.item-name').innerText;
-                document.getElementById('previewBox').innerHTML = `<img src="${img}"><p>${name}</p>`;
-            }
-        });
+        }
+        
+        // 아이템 미리보기 기능
+        function showPreview(element) {
+            var imgSrc = element.querySelector('img').src;
+            var itemName = element.querySelector('.item-name').innerText;
+            var preview = document.getElementById('previewBox');
+            preview.innerHTML = '<img src="' + imgSrc + '" alt="미리보기 이미지"><p>' + itemName + '</p>';
+        }
     </script>
 </body>
 </html>
