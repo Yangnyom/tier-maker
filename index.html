@@ -291,11 +291,16 @@
     <script>
         function allowDrop(ev) { ev.preventDefault(); }
         function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
-        function drag(ev) {
-            // ev.target 대신, 가장 가까운 .item 부모를 찾아 그 ID를 가져오도록 수정
-            var item = ev.target.closest('.item');
-            if (item) {
-                ev.dataTransfer.setData("text", item.id);
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            if (ev.target.classList.contains('tier-items') || ev.target.classList.contains('item-pool')) {
+                ev.target.appendChild(draggedElement);
+            } else if (ev.target.closest('.tier-items')) {
+                ev.target.closest('.tier-items').appendChild(draggedElement);
+            } else if (ev.target.closest('.item-pool')) {
+                ev.target.closest('.item-pool').appendChild(draggedElement);
             }
         }
         
