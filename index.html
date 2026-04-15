@@ -305,5 +305,30 @@
             preview.innerHTML = '<img src="' + imgSrc + '" alt="미리보기 이미지"><p>' + itemName + '</p>';
         }
     </script>
+    <script>
+    // 페이지가 완전히 로드된 후 실행
+        window.onload = function() {
+            // 모든 아이템에 드래그 시작 이벤트 강제 부여
+            document.querySelectorAll('.item').forEach(function(item) {
+                item.setAttribute('draggable', 'true');
+                item.ondragstart = function(ev) {
+                    ev.dataTransfer.setData("text", ev.target.id);
+                };
+            });
+    
+            // 모든 드롭 영역에 허용 이벤트 강제 부여
+            document.querySelectorAll('.tier-items, .item-pool').forEach(function(area) {
+                area.ondragover = function(ev) { ev.preventDefault(); };
+                area.ondrop = function(ev) {
+                    ev.preventDefault();
+                    var data = ev.dataTransfer.getData("text");
+                    var el = document.getElementById(data);
+                    if (el) {
+                        this.appendChild(el);
+                    }
+                };
+            });
+        };
+    </script>
 </body>
 </html>
