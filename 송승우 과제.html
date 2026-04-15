@@ -1,0 +1,16 @@
+                <!-- 팀원 아이템 시작 (주의: id 값은 팀원마다 고유하게 변경하세요) -->
+            <div class="item" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)" id="item_송승우_1">
+                <img src="C:\Users\Administrator\Desktop\아이작.webp" alt="아이작">
+                <div class="item-name">로그라이크</div>
+            </div>
+            
+            <div class="item" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)" id="item_송승우_2">
+                <img src="C:\Users\Administrator\Desktop\발로란트.png" alt="발로란트">
+                <div class="item-name">fps</div>
+            </div>
+
+            <div class="item" draggable="true" ondragstart="drag(event)" onmouseover="showPreview(this)" id="item_송승우_3">
+                <img src="C:\Users\Administrator\Desktop\배틀그라운드.jpg" alt="배틀그라운드">
+                <div class="item-name">배틀로얄</div>
+            </div>
+            <!-- 팀원 아이템 끝 -->
